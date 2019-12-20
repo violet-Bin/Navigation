@@ -40,9 +40,9 @@ log:
 spring:
   profiles: local
   datasource:
-    url: jdbc:mysql://localhost/guns?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+    url: jdbc:mysql://jiangjiabin001.top/Navigation?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
     username: root
-    password: root
+    password: bb357159
     filters: wall,mergeStat
 
 
