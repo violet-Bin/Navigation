@@ -60,6 +60,17 @@
         </set>
         where id = #{id}
     </update>
-
+    
+    <select id="searchSiteByKey" parameterType="java.lang.String" resultType="com.jsnjfz.manage.modular.system.model.Site">
+        SELECT s.*,c.title categoryTitle
+        FROM site s left join category c on s.category_id = c.id
+        WHERE 1=1
+        <if test="searchkey != null and searchkey != ''">
+            AND s.title like CONCAT('%',#{searchkey},'%')
+        </if>
+        <if test="searchkey != null and searchkey != ''">
+            OR s.description like CONCAT('%',#{searchkey},'%')
+        </if>
+    </select>
 
 </mapper>
