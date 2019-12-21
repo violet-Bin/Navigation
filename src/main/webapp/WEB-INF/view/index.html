@@ -1,88 +1,128 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <html lang="zh">
+<head>
+    <style type="text/css">
+        #box {
+            width: 380px;
+            margin: 30px auto;
+            font-family: 'Microsoft YaHei';
+            font-size: 14px;
+        }
 
+        input {
+            width: 260px;
+            border: 1px solid #e2e2e2;
+            height: 30px;
+            float: left;
+            background-image: url(images/search.jpg);
+            background-repeat: no-repeat;
+            background-size: 25px;
+            background-position: 5px center;
+            padding: 0 0 0 40px;
+        }
+
+        .button {
+            border: 1px solid #333;
+            box-shadow: 0 1px 2px #8b8b8b inset, 0 -1px 0 #3d3d3d inset, 0 -2px 3px #8b8b8b inset;
+            background: -webkit-linear-gradient(top, #656565, #4c4c4c);
+            background: -moz-linear-gradient(top, #656565, #4a4a4a);
+            background: linear-gradient(top, #656565, #4a4a4a);
+        }
+
+    </style>
+</head>
 
 @include("/common/_header.html"){}
 
 
 <body class="page-body">
-    <!-- skin-white -->
-    <div class="page-container">
+<!-- skin-white -->
+<div class="page-container">
 
-        @include("/common/_sidebar.html"){}
+    @include("/common/_sidebar.html"){}
 
-        <div class="main-content">
-            <nav class="navbar user-info-navbar" role="navigation">
-                <!-- User Info, Notifications and Menu Bar -->
-                <!-- Left links for user info navbar -->
-                <ul class="user-info-menu left-links list-inline list-unstyled">
-                    <li class="hidden-sm hidden-xs">
-                        <a href="#" data-toggle="sidebar">
-                            <i class="fa-bars"></i>
-                        </a>
-                    </li>
-                </ul>
+    <div class="main-content">
+        <nav class="navbar user-info-navbar" role="navigation">
+            <!-- User Info, Notifications and Menu Bar -->
+            <!-- Left links for user info navbar -->
+            <ul class="user-info-menu left-links list-inline list-unstyled">
+                <li class="hidden-sm hidden-xs">
+                    <a href="#" data-toggle="sidebar">
+                        <i class="fa-bars"></i>
+                    </a>
+                </li>
+            </ul>
 
-            <a href="https://github.com/jsnjfz/WebStack-Guns" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-            </nav>
+            <div id="box">
+                <form action="/search/key" method="get" target="_blank" id="super-search-fm">
+                    <input type="text" name="key" placeholder="请输入关键字">
+                    <button type="submit" class="button">
+                        <i class="fa fa-search "></i>
+                    </button>
+                </form>
+            </div>
+            <!--            <a href="https://github.com/jsnjfz/WebStack-Guns" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>-->
+        </nav>
 
-            @include("/common/_content.html"){}
+        @include("/common/_content.html"){}
 
-            <!-- Main Footer -->
-            <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
-            <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
-            <!-- Or class "fixed" to  always fix the footer to the end of page -->
-            <footer class="main-footer sticky footer-type-1">
-                <div class="footer-inner">
-                    <!-- Add your copyright text here -->
-                    <div class="footer-text">
-                        &copy; 2019
-                        <a href="/"><strong>WebStack</strong></a> design by <a href="https://github.com/jsnjfz" target="_blank"><strong>jsnjfz</strong></a>
-                    </div>
-                    <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
-                    <div class="go-up">
-                        <a href="#" rel="go-top">
-                            <i class="fa-angle-up"></i>
-                        </a>
-                    </div>
+        <!-- Main Footer -->
+        <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+        <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+        <!-- Or class "fixed" to  always fix the footer to the end of page -->
+        <footer class="main-footer sticky footer-type-1">
+            <div class="footer-inner">
+                <!-- Add your copyright text here -->
+                <div class="footer-text">
+                    &copy; 2019
+                    <a href="/"><strong>WebStack</strong></a> design by <a href="https://github.com/jsnjfz"
+                                                                           target="_blank"><strong>jsnjfz</strong></a>
                 </div>
-            </footer>
-        </div>
+                <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
+                <div class="go-up">
+                    <a href="#" rel="go-top">
+                        <i class="fa-angle-up"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
     </div>
+</div>
 
 
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $(document).on('click', '.has-sub', function(){
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on('click', '.has-sub', function () {
             var _this = $(this)
-            if(!$(this).hasClass('expanded')) {
-               setTimeout(function(){
-                    _this.find('ul').attr("style","")
-               }, 300);
+            if (!$(this).hasClass('expanded')) {
+                setTimeout(function () {
+                    _this.find('ul').attr("style", "")
+                }, 300);
 
             } else {
-                $('.has-sub ul').each(function(id,ele){
+                $('.has-sub ul').each(function (id, ele) {
                     var _that = $(this)
-                    if(_this.find('ul')[0] != ele) {
-                        setTimeout(function(){
-                            _that.attr("style","")
+                    if (_this.find('ul')[0] != ele) {
+                        setTimeout(function () {
+                            _that.attr("style", "")
                         }, 300);
                     }
                 })
             }
         })
-        $('.user-info-menu .hidden-sm').click(function(){
-            if($('.sidebar-menu').hasClass('collapsed')) {
-                $('.has-sub.expanded > ul').attr("style","")
+        $('.user-info-menu .hidden-sm').click(function () {
+            if ($('.sidebar-menu').hasClass('collapsed')) {
+                $('.has-sub.expanded > ul').attr("style", "")
             } else {
                 $('.has-sub.expanded > ul').show()
             }
         })
-        $("#main-menu li ul li").click(function() {
+        $("#main-menu li ul li").click(function () {
             $(this).siblings('li').removeClass('active'); // 删除其他兄弟元素的样式
             $(this).addClass('active'); // 添加当前元素的样式
         });
-        $("a.smooth").click(function(ev) {
+        $("a.smooth").click(function (ev) {
             ev.preventDefault();
 
             public_vars.$mainMenu.add(public_vars.$sidebarProfile).toggleClass('mobile-is-visible');
@@ -99,8 +139,8 @@
 
     var href = "";
     var pos = 0;
-    $("a.smooth").click(function(e) {
-        $("#main-menu li").each(function() {
+    $("a.smooth").click(function (e) {
+        $("#main-menu li").each(function () {
             $(this).removeClass("active");
         });
         $(this).parent("li").addClass("active");
@@ -108,7 +148,7 @@
         href = $(this).attr("href");
         pos = $(href).position().top - 30;
     });
-    </script>
+</script>
 
 </body>
 
