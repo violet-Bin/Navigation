@@ -42,7 +42,7 @@ spring:
   datasource:
     url: jdbc:mysql://jiangjiabin001.top/Navigation?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
     username: root
-    password: bb357159
+    password: ********
     filters: wall,mergeStat
 
 
